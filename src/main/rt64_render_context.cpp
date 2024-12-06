@@ -207,7 +207,7 @@ zelda64::renderer::RT64Context::RT64Context(uint8_t* rdram, ultramodern::rendere
     appCore.window.window = window_handle.window;
 #elif defined(__APPLE__)
     appCore.window.window = window_handle.window;
-    appCore.window.layer = window_handle.view;
+    appCore.window.view = window_handle.view;
 #endif
 
     appCore.checkInterrupts = dummy_check_interrupts;
@@ -265,6 +265,9 @@ zelda64::renderer::RT64Context::RT64Context(uint8_t* rdram, ultramodern::rendere
             break;
         case ultramodern::renderer::GraphicsApi::Vulkan:
             app->userConfig.graphicsAPI = RT64::UserConfiguration::GraphicsAPI::Vulkan;
+            break;
+        case ultramodern::renderer::GraphicsApi::Metal:
+            app->userConfig.graphicsAPI = RT64::UserConfiguration::GraphicsAPI::Metal;
             break;
         default:
         case ultramodern::renderer::GraphicsApi::Auto:
