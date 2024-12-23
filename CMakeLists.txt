@@ -355,7 +355,7 @@ if (APPLE)
     # Post-build steps for macOS bundle
     add_custom_command(TARGET Zelda64Recompiled POST_BUILD
         # Copy and fix frameworks first
-        COMMAND ${CMAKE_COMMAND} -P ${CMAKE_SOURCE_DIR}/.github/macos/fixup_bundle.cmake
+        COMMAND ${CMAKE_COMMAND} -D CMAKE_BUILD_TYPE=$<CONFIG> -D CMAKE_GENERATOR=${CMAKE_GENERATOR} -P ${CMAKE_SOURCE_DIR}/.github/macos/fixup_bundle.cmake
 
         # Copy all resources
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/assets ${CMAKE_BINARY_DIR}/temp_assets
